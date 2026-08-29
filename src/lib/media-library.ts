@@ -88,7 +88,7 @@ function buildItem(path: string, url: string, kind: MediaItem["kind"]): MediaIte
   const rel = path.replace("/src/albums/", "");
   const parts = rel.split("/");
   if (parts.length < 2) return null; // loose files at the root are ignored
-  const fileName = parts[parts.length - 1];
+  const fileName = parts[parts.length - 1] as string;
   const group = parts.slice(1, -1).join(" / ");
   const date = parseDate(fileName);
   return {
@@ -111,7 +111,7 @@ function buildAlbums(): Album[] {
   const add = (path: string, url: string, kind: MediaItem["kind"]) => {
     const item = buildItem(path, url, kind);
     if (!item) return;
-    const albumTitle = path.replace("/src/albums/", "").split("/")[0];
+    const albumTitle = path.replace("/src/albums/", "").split("/")[0] as string;
     const list = byAlbum.get(albumTitle) ?? [];
     list.push(item);
     byAlbum.set(albumTitle, list);

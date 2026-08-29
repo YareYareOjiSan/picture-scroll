@@ -24,8 +24,8 @@ type Props = {
   item: MediaItem;
   albumTitle: string;
   onClose: () => void;
-  onPrev?: () => void;
-  onNext?: () => void;
+  onPrev?: (() => void) | undefined;
+  onNext?: (() => void) | undefined;
 };
 
 export function MediaLightbox({ item, albumTitle, onClose, onPrev, onNext }: Props) {
